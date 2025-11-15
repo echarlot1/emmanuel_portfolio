@@ -12,7 +12,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "moduleResolution": "bundler"
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
