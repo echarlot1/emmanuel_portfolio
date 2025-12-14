@@ -6,8 +6,8 @@ import PhoneIcon from '@mui/icons-material/Phone'
 import EmailIcon from '@mui/icons-material/Email'
 import TextsmsIcon from '@mui/icons-material/Textsms'
 
-const PHONE = '+1-555-123-4567' // <-- Replace with your real number
-const EMAIL = 'emmanuel.charlot@email.com' // <-- Replace with your real email
+const PHONE = '8484690748'
+const EMAIL = 'charlotemm7694@gmail.com'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()

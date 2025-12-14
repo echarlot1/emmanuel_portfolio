@@ -35,7 +35,7 @@ export default function Socials() {
       color: '#ff0000',
     },
     {
-      id: 4,
+      id: 5,
       name: 'Instagram',
       icon: InstragramIcon,
       url: 'https://www.instagram.com/manno.allseasons/?hl=en',
@@ -45,7 +45,7 @@ export default function Socials() {
 
   return (
     <section id="socials" className="py-12">
-        <div className="flex gap-4 justify-center py-12">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass px-4 py-3 rounded-full flex gap-4 items-center justify-center">
       {socials.map((social) => {
         const IconComponent = social.icon
         return (
@@ -54,10 +54,10 @@ export default function Socials() {
             href={social.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="glass p-3 rounded-full hover:scale-110 transition-transform"
+            className="p-2 rounded-full hover:scale-110 transition-transform"
             title={social.name}
           >
-            <IconComponent sx={{ fontSize: 24, color: social.color }} />
+            <IconComponent sx={{ fontSize: 22, color: social.color }} />
           </a>
         )
       })}

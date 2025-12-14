@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Inter:wght@300;400;500;600&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,20 +11,26 @@
 
 html, body, #root {
   height: 100%;
+  width: 100%;
 }
+*, *::before, *::after { box-sizing: border-box; }
 
 body {
-  font-family: 'Inter', 'JetBrains Mono', monospace;
+  font-family: 'Lato', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
   background: var(--bg);
   color: #f1f5f9;
   min-height: 100vh;
+  overflow-x: hidden; /* prevent horizontal scroll on mobile */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html { overflow-x: hidden; }
 
 /* Add top padding for fixed navbar; wrap app content in <main className="site-content"> */
 .site-content {
   padding-top: 72px;
+  display: grid;
+  gap: 24px;
 }
 
 /* Glass card utility */
@@ -36,7 +42,21 @@ body {
 }
 
 /* Root container helper (optional - Tailwind container can be used instead) */
-.container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
+.container { max-width: 980px; margin: 0 auto; padding: 2rem; width: 100%; box-sizing: border-box; }
+
+/* Section titles */
+.section-title {
+  font-size: clamp(1.8rem, 2.4vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+.section-subtitle {
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
 
 /* Hero image helpers */
 .hero-img { width: 100%; max-width: 360px; height: auto; border-radius: 1rem; box-shadow: 0 12px 30px rgba(2,6,23,0.6); }
@@ -48,6 +68,7 @@ h1 { line-height: 1.05; }
 .hero-title {
   perspective: 1000px;
   display: inline-block;
+  text-align: center;
 }
 
 .hero-title span {
@@ -120,21 +141,24 @@ h1 { line-height: 1.05; }
 .scene {
   perspective: 900px;
   perspective-origin: 50% 50%;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .cube {
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   position: relative;
   transform-style: preserve-3d;
-  transform: translateZ(-110px);
-  animation: rotateCube 10s linear infinite;
+  transform: translateZ(-90px);
+  animation: rotateCube 14s linear infinite;
+  z-index: 0;
 }
 
 .cube__face {
   position: absolute;
-  width: 220px;
-  height: 220px;
+  width: 180px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,14 +166,15 @@ h1 { line-height: 1.05; }
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(2,6,23,0.6);
+  z-index: 0;
 }
 
-.cube__face--front  { transform: rotateY(0deg) translateZ(110px); }
-.cube__face--back   { transform: rotateY(180deg) translateZ(110px); background: linear-gradient(135deg,#0b1220,#0f172a); }
-.cube__face--right  { transform: rotateY(90deg) translateZ(110px); background: linear-gradient(135deg,#071225,#08172a); }
-.cube__face--left   { transform: rotateY(-90deg) translateZ(110px); background: linear-gradient(135deg,#071225,#08172a); }
-.cube__face--top    { transform: rotateX(90deg) translateZ(110px); background: linear-gradient(135deg,#081226,#0b1622); }
-.cube__face--bottom { transform: rotateX(-90deg) translateZ(110px); background: linear-gradient(135deg,#081226,#0b1622); }
+.cube__face--front  { transform: rotateY(0deg) translateZ(90px); }
+.cube__face--back   { transform: rotateY(180deg) translateZ(90px); background: linear-gradient(135deg,#0b1220,#0f172a); }
+.cube__face--right  { transform: rotateY(90deg) translateZ(90px); background: linear-gradient(135deg,#071225,#08172a); }
+.cube__face--left   { transform: rotateY(-90deg) translateZ(90px); background: linear-gradient(135deg,#071225,#08172a); }
+.cube__face--top    { transform: rotateX(90deg) translateZ(90px); background: linear-gradient(135deg,#081226,#0b1622); }
+.cube__face--bottom { transform: rotateX(-90deg) translateZ(90px); background: linear-gradient(135deg,#081226,#0b1622); }
 
 .cube__face img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -162,4 +187,83 @@ h1 { line-height: 1.05; }
 @media (max-width: 640px) {
   .cube { width: 160px; height: 160px; transform: translateZ(-80px); }
   .cube__face, .cube__face img { width: 160px; height: 160px; }
+}
+
+/* Project cards and images to prevent overlap and ensure containment */
+.project-card {
+  overflow: hidden;
+  max-width: 100%;
+}
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  display: block;
+}
+
+/* Improve spacing between sections to reduce visual overlap */
+section { position: relative; z-index: 1; }
+.site-content > section + section { margin-top: 24px; }
+
+/* Ensure fixed social bar doesn't cause horizontal overflow */
+.fixed.bottom-6 { left: 50%; transform: translateX(-50%); max-width: 92vw; }
+.fixed.bottom-6 .flex { flex-wrap: wrap; }
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .container { padding: 1rem; }
+  .section-title { font-size: clamp(1.4rem, 5.5vw, 1.8rem); }
+  .section-subtitle { font-size: 0.9rem; }
+  .thumb { max-width: 140px; }
+}
+
+h1, h2, h3 {
+  font-family: 'Sora', sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Thumbnail styling for app screenshots */
+.thumb {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 3 / 4; /* phone-like shape */
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  margin: 0 auto;
+}
+.thumb.small { max-width: 200px; }
+.thumb.tiny { max-width: 160px; }
+.thumb:hover { transform: translateY(-2px); transition: transform 200ms ease; }
+
+/* Card polish */
+.glass {
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 30px rgba(2,6,23,0.35);
+}
+
+/* Body text refinement */
+p, li {
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* Ensure MUI components use the same Lato font as body */
+.MuiButton-root,
+.MuiMenuItem-root,
+.MuiMenu-list,
+.MuiMenu-paper,
+.MuiPopover-paper,
+.MuiTypography-root {
+  font-family: 'Lato', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif !important;
+  letter-spacing: -0.01em;
 }

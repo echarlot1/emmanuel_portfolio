@@ -11,8 +11,8 @@ import Animated3D from './Animated3D'
 const meImage = new URL('../assets/me-modified.png', import.meta.url).href
 const resumePdf = new URL('../assets/Emmanuel_Charlot_Resume.pdf', import.meta.url).href
 
-const PHONE = '+1-555-123-4567'
-const EMAIL = 'emmanuel.charlot@email.com'
+const PHONE = '8484690748'
+const EMAIL = 'charlotemm7694@gmail.com'
 
 export default function Hero() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -25,15 +25,15 @@ export default function Hero() {
     window.open(resumePdf, '_blank', 'noopener,noreferrer')
   }
 
-  const summary = `Emmanuel Charlot is a Software Engineer based in the NJ/NY area currently working at JPMorgan Chase, where he contributes to high-volume payment systems and builds both backend services and frontend features. He is proficient in Java and Spring Boot for backend development and uses React and TypeScript to create modern, responsive front-end experiences. Emmanuel also works with Node.js, Express, MongoDB, and MySQL, and applies testing practices using JUnit and Cypress while leveraging cloud storage like AWS S3. He builds mobile apps with React Native and has led projects such as AllSeasonsFit (a fitness/community app) and allseasonstech (a full-stack social web app). Passionate about fitness and community, he spends time at the gym and creates content around health and discipline. He aims to continue growing as a backend/full-stack engineer while launching impactful products.`
+ 
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-4 py-16">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="text-center md:text-left">
+      <div className="container mx-auto">
+        <div className="grid grid-cols-1 gap-8 items-center justify-items-center md:translate-x-1 lg:translate-x-2">
+          <div className="text-center max-w-2xl">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 hero-title">
-              <span>H</span><span>e</span><span>l</span><span>l</span><span>o</span><span>,</span>{' '}
+              {/* <span>H</span><span>e</span><span>l</span><span>l</span><span>o</span><span>,</span>{' '}
               <span>I</span><span>'</span><span>m</span> <span className="text-accent">E</span>
               <span className="text-accent">m</span><span className="text-accent">m</span>
               <span className="text-accent">a</span><span className="text-accent">n</span>
@@ -41,16 +41,34 @@ export default function Hero() {
               <span className="text-accent">l</span>{' '}<span className="text-accent">C</span>
               <span className="text-accent">h</span><span className="text-accent">a</span>
               <span className="text-accent">r</span><span className="text-accent">l</span>
-              <span className="text-accent">o</span><span className="text-accent">t</span>
+              <span className="text-accent">o</span><span className="text-accent">t</span> */}
             </h1>
 
-            <p className="text-muted text-lg leading-relaxed mb-4">{summary}</p>
+            <p className="section-subtitle">
+  Hello, I’m Emmanuel Charlot.
+  <br /><br />
 
-            <p className="text-muted text-sm mb-6">
+  a Software Engineer based in the NJ/NY area, currently working at <strong>JPMorgan Chase</strong>, where he contributes to high-volume payment systems and builds both backend services and frontend features.
+  <br /><br />
+
+  He is proficient in <strong>Java</strong> and <strong>Spring Boot</strong> for backend development and uses <strong>React</strong> and <strong>TypeScript</strong> to create modern, responsive front-end experiences.
+  <br /><br />
+
+  Emmanuel also works with <strong>Node.js</strong>, <strong>Express</strong>, <strong>MongoDB</strong>, and <strong>MySQL</strong>, and applies testing practices using <strong>JUnit</strong> and <strong>Cypress</strong> while leveraging cloud storage solutions such as <strong>AWS S3</strong>.
+  <br /><br />
+
+  In addition to web development, he builds mobile applications using <strong>React Native</strong> and has led projects such as <strong>AllSeasonsFit</strong>, a fitness and community-focused mobile app, as well as <strong>allseasonstech</strong>, a full-stack social web application.
+  <br /><br />
+
+  Passionate about fitness and community, Emmanuel spends time at the gym and creates content centered around health, discipline, and personal growth. He aims to continue growing as a backend and full-stack engineer while launching impactful, real-world products.
+</p>
+
+
+            <p className="text-muted text-sm mb-6 text-center">
               Languages: Creole <span role="img" aria-label="haitian">🇭🇹</span>, English, French
             </p>
 
-            <div className="flex flex-wrap gap-6 items-center justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 items-center justify-center mt-6">
               <Button
                 onClick={viewResume}
                 variant="contained"
@@ -103,7 +121,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex justify-center md:justify-end">
+          <div className="flex justify-center mt-4">
             <Animated3D />
           </div>
         </div>
